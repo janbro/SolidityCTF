@@ -4,6 +4,7 @@
   "description": "CTF Website and Solidity dev environment",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd solidity-ctf && npm run start",
     "truffle build": "cd SolidityChallenges && truffle build",
     "truffle deploy": "cd SolidityChallenges && truffle deploy"
   },
