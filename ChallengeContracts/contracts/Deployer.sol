@@ -35,8 +35,6 @@ contract Deployer is Ownable {
         public
         payable
     {
-        require(msg.value == 0.5 ether, "Must send 0.5 ether");
-
         require(isContract(address(challenges[index])), "Challenge has not been created yet");
 
         playersToContracts[msg.sender][index] = (new Proxy)(challenges[index]);

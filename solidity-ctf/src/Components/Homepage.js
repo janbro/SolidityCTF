@@ -17,7 +17,7 @@ class Homepage extends Component {
                         {
                             this.props.challenges.map((value, index) => {
                                 return (
-                                    <div className="col-2">
+                                    <div key={ index } className="col-2">
                                         <Link to={`/challenge/${index + 1}`} className="btn btn-primary btn-lg" role="button" aria-pressed="true">Challenge { (index + 1) }</Link>
                                     </div>
                                 );
