@@ -1,0 +1,12 @@
+{
+  "name": "solidityctf",
+  "version": "1.0.0",
+  "description": "CTF Website and Solidity dev environment",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "truffle build": "cd SolidityChallenges && truffle build",
+    "truffle deploy": "cd SolidityChallenges && truffle deploy"
+  },
+  "author": "Janbro Munoz",
+  "license": "ISC"
+}
