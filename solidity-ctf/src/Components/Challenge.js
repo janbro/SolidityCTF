@@ -57,7 +57,7 @@ class Challenge extends Component {
 
         if (typeof web3 !== 'undefined') {
             // Use Mist/MetaMask's provider
-            this.web3Provider = window.ethereum;//web3.currentProvider;
+            this.web3Provider = window.ethereum;
             this.web3 = new Web3(web3.currentProvider);
 
             this.deployer = TruffleContract(Deployer);
@@ -98,6 +98,10 @@ class Challenge extends Component {
                 network: networkName,
                 targetNetwork: this.targetNetwork === networkName || networkName > 100
             });
+
+            if(!this.state.targetNetwork) {
+                NotificationManager.error(`Please connect to ${this.targetNetwork} network`);
+            }
         });
     };
 
@@ -115,6 +119,7 @@ class Challenge extends Component {
             // Get current challenge address
             this.setChallengeContractAddress();
         }).catch(err => {
+            NotificationManager.error("Deployer contract has not been detected on this network");
             console.log(err);
         });
     };
@@ -126,8 +131,11 @@ class Challenge extends Component {
                     this.setState({ challengeAddress: event });
                 }
             }).catch(err => {
+                NotificationManager.error("Could not retrieve challenge address");
                 console.log(err);
             });
+        }).catch(err => {
+            console.log(err);
         });
     }
 
@@ -145,6 +153,8 @@ class Challenge extends Component {
             }).catch(err => {
                 console.log(err);
             });
+        }).catch(err => {
+            console.log(err);
         });
     }
 
@@ -160,9 +170,12 @@ class Challenge extends Component {
                 this.setState({nickname});
                 this.props.setAccount(this.state.account, nickname);
             }).catch(err => {
+                NotificationManager.error("Could not retrieve nickname");
                 console.log(err);
             });
-        })
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
     resetApp = () => {
@@ -250,6 +263,9 @@ class Challenge extends Component {
             }).finally(() => {
                 this.setState({ inProgress: false });
             });
+        }).catch(err => {
+            NotificationManager.error("Deployer contract has not been detected on this network")
+            console.log(err);
         });
     }
 
@@ -263,6 +279,9 @@ class Challenge extends Component {
             }).finally(() => {
                 this.setState({ inProgress: false });                
             });
+        }).catch(err => {
+            NotificationManager.error("Deployer contract has not been detected on this network");
+            console.log(err);
         });
     }
 
@@ -347,7 +366,10 @@ class ChallengePresentational extends Component {
                             })()
                         }
                     </div>
-                    <div className="col-7">
+                    <div className="col-7" style={ {pointerEvents: "none"} }>
+                        <CopyToClipboard text={ this.props.challenges[this.props.challengeId].artifact.source } onCopy={ () => { NotificationManager.info("Source copied to clipboard") } }>
+                            <button className="fas btn fa-copy copy-source-button"></button>
+                        </CopyToClipboard>
                         <Highlight className="solidity code-block">
                             { this.props.challenges[this.props.challengeId].artifact.source }
                         </Highlight>
