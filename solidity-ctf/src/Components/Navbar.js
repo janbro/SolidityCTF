@@ -20,9 +20,11 @@ class Navbar extends Component {
                                 Challenges
                             </button>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link className="dropdown-item" to="/challenge/1">Challenge 1</Link>
-                                <Link className="dropdown-item" to="/challenge/2">Challenge 2</Link>
-                                <Link className="dropdown-item" to="/challenge/3">Challenge 3</Link>
+                                {
+                                    this.props.challenges.map((value, index) => {
+                                        return <Link className="dropdown-item" to={`/challenge/${index + 1}`}>Challenge { (index + 1) }</Link>;
+                                    })
+                                }
                             </div>
                         </li>
                         <li className="nav-item">

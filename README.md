@@ -42,7 +42,7 @@ and push the contract to the local network with
 # Frontend
 
 ## Development
-The frontend for the challenges utilizes contracts compiled artifacts to display their information and interact with the deployer. To add a contract to the challenges page, simply add a object to the challenges array in [Challenge.js](solidity-ctf/src/Components/Challenge.js). A title, difficulty, decription (flavor text), and link to the contract artifact file is required. Be sure to have your deployer contract on the network you are using. Currently, the site will not allow any network other than Ropsten or a local RPC however you can update the targetNetwork to specify which should be allowed.
+The frontend for the challenges utilizes contracts compiled artifacts to display their information and interact with the deployer. To add a contract to the challenges page, simply add a object to the challenges array in [App.js](solidity-ctf/src/App.js). A title, difficulty, decription (flavor text), and link to the contract artifact file is required. Be sure to have your deployer contract on the network you are using. Currently, the site will not allow any network other than Ropsten or a local RPC however you can update the targetNetwork to specify which should be allowed.
 
 `cd solidity-ctf && npm install`
 

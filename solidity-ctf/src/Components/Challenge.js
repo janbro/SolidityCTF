@@ -8,24 +8,8 @@ import Web3 from 'web3';
 import TruffleContract from 'truffle-contract';
 
 import Deployer from '../build/contracts/Deployer';
-import UpdateableOwnable from '../build/contracts/UpdateableOwnable';
-import Contract from '../build/contracts/Contract';
 
 class Challenge extends Component {
-    challenges = [
-        {
-            title: 'Multi-Owner Contract',
-            difficulty: 'EASY',
-            description: 'My friend wanted to create a new type of ownable contract where multiple people can be owners. However, when he deployed it for his token sale, someone managed to add themself and many other owners and they minted tons of their own tokens! Luckily the sale hasn\'t started yet, help him find the bug so he can deploy a new contract and save his ICO.',
-            artifact: UpdateableOwnable
-        },
-        {
-            title: 'Lorem ipsum',
-            difficulty: 'Medium',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam finibus massa pretium consectetur maximus. Proin condimentum interdum scelerisque. Phasellus in diam ligula. Nunc ac convallis nisi, at porta enim. Nunc felis nisi, euismod cursus suscipit sodales, elementum id eros. Etiam mauris ante, bibendum ut arcu id, rhoncus volutpat tortor. Praesent sed pellentesque enim, vel viverra nisi. Morbi cursus vehicula libero.',
-            artifact: Contract
-        }
-    ];
 
     constructor(props){
         super(props);
@@ -209,7 +193,7 @@ class Challenge extends Component {
     }
 
     componentDidMount() {
-        if(this.challenges[this.state.challengeId]) {
+        if(this.props.challenges[this.state.challengeId]) {
             window.ethereum.enable().then(event => {
                 NotificationManager.success("Thank you for connecting");
                 this.setState({
@@ -286,11 +270,11 @@ class Challenge extends Component {
     }
 
     render() {
-        if(!this.challenges[this.state.challengeId]) {
+        if(!this.props.challenges[this.state.challengeId]) {
             return <Redirect to="/"></Redirect>
         }
         return (
-            <ChallengePresentational {...this.state} challenges={ this.challenges } deployChallenge={ this.deployChallenge } completeChallenge={ this.completeChallenge }></ChallengePresentational>
+            <ChallengePresentational {...this.state} challenges={ this.props.challenges } deployChallenge={ this.deployChallenge } completeChallenge={ this.completeChallenge }></ChallengePresentational>
         );
     }
 }
