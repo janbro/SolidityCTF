@@ -14,15 +14,15 @@ class Homepage extends Component {
                 </div>
                 <div className="container mx-auto mt-3">
                     <div className="row justify-content-center">
-                        <div className="col-2">
-                            <Link to="/challenge/1" className="btn btn-primary btn-lg" role="button" aria-pressed="true">Challenge 1</Link>
-                        </div>
-                        <div className="col-2">
-                            <Link to="/challenge/2" className="btn btn-primary btn-lg" role="button" aria-pressed="true">Challenge 2</Link>
-                        </div>
-                        <div className="col-2">
-                            <Link to="/challenge/3" className="btn btn-primary btn-lg" role="button" aria-pressed="true">Challenge 3</Link>
-                        </div>
+                        {
+                            this.props.challenges.map((value, index) => {
+                                return (
+                                    <div className="col-2">
+                                        <Link to={`/challenge/${index + 1}`} className="btn btn-primary btn-lg" role="button" aria-pressed="true">Challenge { (index + 1) }</Link>
+                                    </div>
+                                );
+                            })
+                        }
                     </div>
                 </div>
             </div>
