@@ -131,7 +131,7 @@ class Challenge extends Component {
                     if(event) {
                         NotificationManager.success("Challenge completed!");
                     } else {
-                        NotificationManager.error("Incorrect");
+                        NotificationManager.error("Challenge not completed, please try again");
                     }
                 }
             }).catch(err => {
