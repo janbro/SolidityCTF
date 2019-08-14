@@ -32,6 +32,10 @@
     }
 }
 
+.all-pointer-events {
+    pointer-events: all;
+}
+
 .code-block {
     border-radius: 5px;
     padding: 2em;
