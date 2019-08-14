@@ -22,7 +22,7 @@ class Navbar extends Component {
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {
                                     this.props.challenges.map((value, index) => {
-                                        return <Link className="dropdown-item" to={`/challenge/${index + 1}`}>Challenge { (index + 1) }</Link>;
+                                        return <Link className="dropdown-item" key={ index } to={`/challenge/${index + 1}`}>Challenge { (index + 1) }</Link>;
                                     })
                                 }
                             </div>

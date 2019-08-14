@@ -238,10 +238,15 @@ class Challenge extends Component {
     deployChallenge = () => {
         this.setState({ inProgress: true });
         this.deployer.deployed().then(deployerInstance => {
-            deployerInstance.deployChallenge(this.state.challengeId, { from: this.state.account, value: this.web3.toWei(0.5) }).then(event => {
-                NotificationManager.info("Challenge deployed!");
-                this.setChallengeContractAddress();
-                this.checkChallengeCompletion();
+            deployerInstance.deployChallenge(this.state.challengeId, { from: this.state.account, value: this.web3.toWei(0.01) }).then(event => {
+                return this.web3.eth.getTransactionReceipt(event.tx, (error, receipt) => {
+                    setTimeout(() => {
+                        if(error) throw new Error(error);
+                        NotificationManager.info("Challenge deployed!");
+                        this.setChallengeContractAddress();
+                        this.checkChallengeCompletion();
+                    }, 1000);
+                });
             }).catch(err => {
                 NotificationManager.error(err.message);
             }).finally(() => {
@@ -308,7 +313,7 @@ class ChallengePresentational extends Component {
                             (() => {
                                 if(!this.props.challengeAddress) {
                                     return (
-                                        <LoadingButton text="Deploy" disabled={ !this.props.targetNetwork || !this.props.deployerAddress || !this.props.providerEnabled } clickHandler={ this.props.deployChallenge }/>
+                                        <LoadingButton text="Deploy" loading={ this.props.inProgress } disabled={ !this.props.targetNetwork || !this.props.deployerAddress || !this.props.providerEnabled } clickHandler={ this.props.deployChallenge }/>
                                     );
                                 }
                                 else if(!this.props.challengeCompleted) {
