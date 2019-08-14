@@ -37,11 +37,21 @@
     padding: 2em;
 }
 
+.copy-source-button {
+    position: absolute;
+    display: block;
+    background-color: transparent;
+    color: white;
+    right: 20px;
+    top: 10px;
+    pointer-events: all;
+}
+
 .copy-button {
     display: contents;
 }
 
-.copy-button:active {
+.copy-button:active, .copy-source-button:active {
     color: grey;
 }
 
