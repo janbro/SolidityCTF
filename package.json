@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "description": "CTF Website and Solidity dev environment",
   "scripts": {
+    "install": "npm run truffle-install && npm run frontend-install",
+    "truffle-install": "cd ChallengeContracts && npm install",
+    "frontend-install": "cd solidity-ctf && npm install",
+    "build": "npm run react-build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd solidity-ctf && npm run start",
-    "truffle build": "cd SolidityChallenges && truffle build",
-    "truffle deploy": "cd SolidityChallenges && truffle deploy"
+    "start": "node solidity-ctf/index.js",
+    "dev-start": "cd solidity-ctf && npm run start",
+    "react-build": "cd solidity-ctf && npm run build",
+    "truffle-build": "cd ChallengeContracts && truffle build",
+    "truffle-deploy": "cd ChallengeContracts && truffle deploy"
   },
   "author": "Janbro Munoz",
   "license": "ISC"

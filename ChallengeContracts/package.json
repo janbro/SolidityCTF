@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "postinstall": "truffle build && truffle migrate --network ropsten",
     "test": "echo \"Error: no test specified\" && exit 1",
     "ganache": "ganache-cli --account=\"0x1c8a3c16d558d791e0b0914e10f68a135eae6a6c6eca2764c7978e96941b17a5, 100000000000000000000\" --account=\"0xe871cd026e621665bc8042184bae77142f5dddc2130b0ce29abc84c58c4056f7, 100000000000000000000\""
   },

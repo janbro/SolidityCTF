@@ -22,8 +22,8 @@ const HDWalletProvider = require('truffle-hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //
 const fs = require('fs');
-const mnemonic = fs.readFileSync(".secret").toString().trim();
-const infura = fs.readFileSync("infura.secret").toString().trim();
+const mnemonic = process.env.MNEMONIC || fs.readFileSync(".secret").toString().trim();
+const infura = process.env.INFURA || fs.readFileSync("infura.secret").toString().trim();
 
 module.exports = {
   /**
