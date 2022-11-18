@@ -14,7 +14,7 @@
     "react-notifications": "^1.4.3",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
+    "react-scripts": "5.0.1",
     "truffle-contract": "^3.0.6",
     "web3-js": "^1.0.5-beta.26"
   },
